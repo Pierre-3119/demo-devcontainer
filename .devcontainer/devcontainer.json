@@ -1,0 +1,49 @@
+{
+  "name": ".NET 10 API - SQL Server & Redis",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "vscode",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+
+  "forwardPorts": [5080],
+  "portsAttributes": {
+    "5080": { "label": "API (Scalar sur /scalar)", "onAutoForward": "notify" }
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "ms-mssql.mssql",
+        "redis.redis-for-vscode",
+        "ms-azuretools.vscode-containers",
+        "humao.rest-client"
+      ],
+      "settings": {
+        "mssql.connections": [
+          {
+            "profileName": "devcontainer (sqlserver)",
+            "server": "sqlserver",
+            "database": "DevcontainerApi",
+            "authenticationType": "SqlLogin",
+            "user": "sa",
+            "password": "DevContainer#2026",
+            "savePassword": true,
+            "trustServerCertificate": true
+          }
+        ]
+      }
+    }
+  }
+}

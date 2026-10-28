@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:5080
+
+### Lister les produits
+GET {{baseUrl}}/products
+
+### Créer un produit
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Clavier mécanique",
+  "price": 89.90
+}
+
+### Lire un produit (rejouer pour voir X-Cache: HIT)
+GET {{baseUrl}}/products/1
